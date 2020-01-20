@@ -120,9 +120,7 @@ comparisons.And.prototype.isMember = function(value) {
 	});
 };
 comparisons.Or.prototype.isMember = function(value) {
-	return this.values.some(function(and) {
-		return and.isMember(value);
-	});
+	return this.values.some(and=> and.isMember(value));
 };
 Object.keys(comparisons).forEach(function(name) {
 	comparisons[name].prototype[isMemberSymbol] = comparisons[name].prototype.isMember;
